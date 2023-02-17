@@ -1,16 +1,12 @@
 package com.example.testunit
 
-import android.graphics.Color
 import android.graphics.PorterDuff
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import java.math.BigDecimal
 import java.math.RoundingMode
 
 class MainActivity : AppCompatActivity() {
@@ -22,15 +18,16 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val StartButton: Button = findViewById(R.id.ButtonStart)
         val CheckButton: Button = findViewById(R.id.ButtonCheck)
-        var mEdit: EditText  = findViewById(R.id.Result)
-        var count: Int = 0
-        var CountCorrect: Int = 0
-        var CountInCorrect: Int = 0
-        var result: String = ""
+        val mEdit: EditText  = findViewById(R.id.Result)
+        var count = 0
+        var CountCorrect = 0
+        var CountInCorrect = 0
+        var result = ""
         StartButton.setOnClickListener {
             val FirstText: TextView = findViewById(R.id.TextFirstOperand)
             val SecondText: TextView = findViewById(R.id.TextSecondOperand)
             val OperationText: TextView = findViewById(R.id.Operation)
+            mEdit.getBackground().mutate().setColorFilter(getResources().getColor(android.R.color.black), PorterDuff.Mode.SRC_ATOP)
             val FirstNum = (10..99).random()
             var SecNum = (10..99).random()
             val randSign = (1..4).random()
