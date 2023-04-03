@@ -70,15 +70,15 @@ class MainActivity : AppCompatActivity() {
             AllTest.text = count.toString()
             if (result == mEdit.text.toString()){
                 CountCorrect++
-                Correct.text = CountCorrect.toString()
+                Correct.text =CountCorrect.toString()
                 mEdit.getBackground().mutate().setColorFilter(getResources().getColor(android.R.color.holo_green_light), PorterDuff.Mode.SRC_ATOP)
             }else{
                 CountInCorrect++
                 InCorrect.text = CountInCorrect.toString()
                 mEdit.getBackground().mutate().setColorFilter(getResources().getColor(android.R.color.holo_red_light), PorterDuff.Mode.SRC_ATOP)
+                Toast.makeText(this, "Правильный ответ был:  ${result} Вы ввели ${mEdit.text}", Toast.LENGTH_SHORT).show()
             }
-            Percent.text = (CountCorrect.toBigDecimal().divide(count.toBigDecimal(), 2, RoundingMode.HALF_UP)).toString() + "%"
-            Toast.makeText(this, "Правильный ответ был:  ${result} Вы ввели ${mEdit.text}", Toast.LENGTH_SHORT).show()
+            Percent.text = String.format("%.2f",((CountCorrect*1.0/count)*100)) + "%"
             CheckButton.isClickable = false
             StartButton.isClickable = true
             mEdit.isEnabled = false
